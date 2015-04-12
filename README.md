@@ -6,7 +6,7 @@ This presentation was made with reveal.js.
 
 # Presentations
 
-* Anxi lu tech talk - 2015/04/10
+* Anxi lu tech talk - 2015/04/10 (v1.0)
 
 # References
 
