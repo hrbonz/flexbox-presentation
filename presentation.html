@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Flex your HTML</title>
+
+		<meta name="description" content="A flexbox presentation">
+		<meta name="author" content="Stefan 'hr' Berder">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="reveal.js-3.0.0/css/reveal.css">
+		<link rel="stylesheet" href="reveal.js-3.0.0/css/theme/solarized.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="reveal.js-3.0.0/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js-3.0.0/css/print/pdf.css' : 'reveal.js-3.0.0/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                <section>
+                    <h1>Flex your HTML</h1>
+                    <h3>A simple flexbox presentation</h3>
+                    <p><small>by <a href="http://bonz.org/">Stefan 'hr' Berder</a></small></p>
+                </section>
+                <section>
+                    <h2>About me</h2>
+                    <ul>
+                        <li>Fell in coding when I was 7 (Basic 1.0 on Amstrad CPC6128)</li>
+                        <li>First website in 1995 with HTML2.0 and <b>no CSS</b><br>At that time, &lt;blink&gt; was stylish and common</li>
+                        <li>Open source advocate</li>
+                        <li>Current preferred language: python</li>
+                        <li>Github: <a href="https://github.com/hrbonz/">https://github.com/hrbonz/</a></li>
+                        <li>Website: <a href="http://www.bonz.org">http://www.bonz.org/</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Past of website layout techniques</h2>
+                    <ul>
+                        <li>Tables</li>
+                        <li class="fragment">Floating elements</li>
+                        <li class="fragment">Flexbox</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>FlexWhat?</h2>
+                    <p>Flexbox is a layout model for CSS3, it allows the browser to arrange elements on the screen in a predictive way.</p>
+                    <p><span class="fragment">Flexbox is <b>fluid</b></span><span class="fragment">, <b>responsive</b></span><span class="fragment">, <b>adaptive</b></span></p>
+                </section>
+                <section>
+                    <h2>Should I use flexbox?</h2>
+                    <p>Short answer is: <b>YES</b></>
+                    <p><small>(except if you have to support IE8/9)</small></p>
+                    <p>There are still some quirks and bugs and support is not complete across the board (<a href="http://caniuse.com/#feat=flexbox">caniuse.com</a>) but most of it is working fine on most platforms/browsers</p>
+                    <p><small>Main issue: wrapping elements</small></p>
+                </section>
+                <section>
+                    <h2>Let's dive in - basic concepts</h2>
+                    <p>There are 2 main elements in a flexbox layout:
+                        <ul>
+                            <li>Containers</li>
+                            <li>Items</li>
+                        </ul>
+                    </p>
+                </section>
+                <section>
+                    <h2>Let's dive in - basic concepts</h2>
+                    <p>A <i>container</i> is used to wrap your flex <i>items</i></p>
+                    <p>It defines the flow, distribution and alignment of the items</p>
+                </section>
+                <section>
+                    <h2>Let's dive in - basic concepts</h2>
+                    <p>An <i>item</i> is an element in the flexbox flow</p>
+                    <p>It can alter its size, relative size, order and alignment</p>
+                </section>
+                <section>
+                    <h2>Here be dragons</h2>
+                    <pre><code data-trim>
+.mycontainer {
+    display: flex;
+}
+                    </code></pre>
+                    <p>Let see a <a href="examples/flex-1.html" target="_blank">basic example</a>
+                    <p><b>Important</b>: only the direct children elements are affected</p>
+                </section>
+                <section>
+                    <h2>Here be dragons</h2>
+                    <p>for better compatibility:</p>
+                    <pre><code data-trim>
+.mycontainer {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+                    </code></pre>
+                    <p>The <code>-webkit-</code> and <code>-ms-</code> prefixes are ensuring the extra.</p>
+                </section>
+                <section>
+                    <h2>Now, the first magic trick</h2>
+                    <p>Behold the almighty <a href="examples/flex-2.html" target="_blank">absolute centering</a></p>
+                    <pre><code data-trim>
+html,
+body {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.item {
+    margin: auto;
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Flow direction</h2>
+                    <pre><code data-trim>
+.container {
+    display: flex;
+    flex-direction: column;
+}
+                    </code></pre>
+                    <p>Options are: <code>row</code> (default), <code>column</code>, <code>row-reverse</code>, <code>column-reverse</code></p>
+                    <p><a href="examples/flex-3.html" target="_blank">Example</a></p>
+                </section>
+                <section>
+                    <h2>Align items</h2>
+                    <pre><code data-trim>
+.container {
+    align-items: flex-start;
+    display: flex;
+}
+                    </code></pre>
+                    <p>Options are: <code>stretch</code> (default), <code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>baseline</code></p>
+                    <p><a href="examples/flex-4.html" target="_blank">Example</a></p>
+                </section>
+                <section>
+                    <h2>Justify content</h2>
+                    <pre><code data-trim>
+.container {
+    display: flex;
+    justify-content: flex-end;
+}
+                    </code></pre>
+                    <p>Options are: <code>flex-start</code> (default), <code>flex-end</code>, <code>center</code>, <code>space-between</code>, <code>space-around</code></p>
+                    <p><a href="examples/flex-5.html" target="_blank">Example</a></p>
+                </section>
+                <section>
+                    <h2>Items order</h2>
+                    <pre><code data-trim>
+.item {
+    flex: 1;
+}
+
+.item-1 {
+    order: 2;
+}
+
+.item-2 {
+    order: 3;
+}
+
+.item-3 {
+    order: 1;
+}
+                    </code></pre>
+                    <p><a href="examples/flex-6.html" target="_blank">Example</a></p>
+                </section>
+                <section>
+                    <h2>Items distribution</h2>
+                    <pre><code data-trim>
+.item-1 {
+    flex: 3;
+}
+
+.item-2,
+.item-3 {
+    flex: 1;
+}
+                    </code></pre>
+                    <p><a href="examples/flex-7.html" target="_blank">Example</a></p>
+                </section>
+                <section>
+                    <h2>Resources to go further</h2>
+                    <ul>
+                        <li>http://dev.w3.org/csswg/css-flexbox/</li>
+                        <li>https://css-tricks.com/snippets/css/a-guide-to-flexbox/</li>
+                        <li>http://www.sketchingwithcss.com/samplechapter/cheatsheet.html</li>
+                        <li>https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Thank you</h1>
+                    <p>This presentation and the examples are availabe at <a href="https://github.com/hrbonz/flexbox-presentation/">https://github.com/hrbonz/flexbox-presentation/</a></p>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="reveal.js-3.0.0/lib/js/head.min.js"></script>
+		<script src="reveal.js-3.0.0/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+keyboard: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'reveal.js-3.0.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js-3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js-3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js-3.0.0/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js-3.0.0/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js-3.0.0/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
