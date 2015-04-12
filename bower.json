@@ -1,0 +1,24 @@
+{
+  "name": "flexbox-presentation",
+  "version": "1.0.1",
+  "homepage": "https://github.com/hrbonz/flexbox-presentation",
+  "authors": [
+    "Stefan 'hr' Berder <hr@bonz.org>"
+  ],
+  "description": "A simple flexbox presentation",
+  "keywords": [
+    "flexbox",
+    "css"
+  ],
+  "license": "BSD 3-clause",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "hakimel/reveal.js#~3.0.0"
+  }
+}
