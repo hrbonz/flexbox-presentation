@@ -15,6 +15,7 @@ If node.js is not installed in your environment:
     (flexbox-presentation)$ nodeenv -p --iojs --prebuilt -c
 
 With node.js installed:
+
     (flexbox-presentation)$ npm install -g bower
     (flexbox-presentation)$ bower install -p
 
