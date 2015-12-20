@@ -27,6 +27,19 @@ With node.js installed:
     $ tar zxf reveal.js-3.0.0.tar.gz
     $ mv reveal.js-3.0.0 reveal.js
 
+# Run
+
+To run the presentation you can either open the file locally or serve it so
+people can open the examples when following the talk and play with options in
+the dev tools.
+
+To simply serve the example files on a local network:
+
+    $ cd examples
+    $ python -m SimpleHTTPServer
+
+You can now direct people to open http://your.ip/ in a browser.
+
 
 # Presentations
 
